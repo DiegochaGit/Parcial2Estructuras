@@ -36,18 +36,51 @@ Console.WriteLine(automovils);
 
 //Returns the cars of a brand
 Console.WriteLine("Returns the cars of a brand: ");
-var output = automovils.GetBrand("Mercedes-Benz");
-Console.WriteLine(output);
+var output1 = automovils.GetBrand("Mercedes-Benz");
+Console.WriteLine(output1);
 
 //Returns the cars in a range of years
 Console.WriteLine("Returns the cars in a range of years: ");
 var output2 = automovils.GetYear(2021, 2022);
 Console.WriteLine(output2);
 
-// Retorna los carros dependiendo de los siguientes criterios. 
-// Nota si en los criterios de marca, color y modelo 
-// se envía * significa que son todos 
-Console.WriteLine("Returns the cars depend of criteries: ");
+// Returns the cars depending on the criteria. 
+// Note if in the brand, color and model criteria is sent * means that they are all of them
+
+Console.WriteLine("Returns the cars with all of the criteries: ");
 var output3 = automovils.GetSeveralFilters("Mazda", "Van", "Gray", 2022, 150000000);
 Console.WriteLine(output3);
+
+Console.WriteLine("Returns the cars with the criteries brand=* y model=*: ");
+var output4 = automovils.GetSeveralFilters("*", "*", "Gray", 2021, 100000000);
+Console.WriteLine(output4);
+
+Console.WriteLine("Returns the cars with the criteries model=* y color=*: ");
+var output5 = automovils.GetSeveralFilters("Mazda", "*", "*", 2022, 150000000);
+Console.WriteLine(output5);
+
+Console.WriteLine("Returns the cars with the criteries brand=* y color=*: ");
+var output6 = automovils.GetSeveralFilters("*", "Van", "*", 2022, 150000000);
+Console.WriteLine(output6);
+
+Console.WriteLine("Returns the cars with the criterion brand=*: ");
+var output7 = automovils.GetSeveralFilters("*", "Van", "Gray", 2022, 150000000);
+Console.WriteLine(output7);
+
+Console.WriteLine("Returns the cars with the criterion model=*: ");
+var output8 = automovils.GetSeveralFilters("Mazda", "*", "Gray", 2022, 150000000);
+Console.WriteLine(output8);
+
+Console.WriteLine("Returns the cars with the criterion color=*: ");
+var output9 = automovils.GetSeveralFilters("Mazda", "Van", "*", 2022, 150000000);
+Console.WriteLine(output9);
+
+Console.WriteLine("Returns the cars with the criteries brand=*, model=* y color=*: ");
+var output10 = automovils.GetSeveralFilters("*", "*", "*", 2022, 150000000);
+Console.WriteLine(output10);
+
+//// To array
+//Console.WriteLine("List with min and mas Price converted to array =>");
+//var output11 = automovils.GetMinMax();
+//Console.WriteLine(output11);
 

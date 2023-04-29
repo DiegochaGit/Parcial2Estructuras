@@ -197,16 +197,95 @@ namespace LinkedLists.Logic
             while (pointer != null)
             {
                 Automovil auto = (Automovil)Convert.ChangeType(pointer.Data, typeof(Automovil))!;
-                if (auto!.Brand!.Equals(brand) && auto!.Model!.Equals(model) && auto!.Color!.Equals(color)
-                    && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                if (brand != "*" && model != "*" && color != "*")
                 {
-                    output += $"{auto}\n";
+                    if (auto!.Brand!.Equals(brand) && auto!.Model!.Equals(model) && auto!.Color!.Equals(color)
+                    && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand == "*" && model == "*" && color != "*")
+                {
+                    if (auto!.Color!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand == "*" && model != "*" && color == "*")
+                {
+                    if (auto!.Model!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand != "*" && model == "*" && color == "*")
+                {
+                    if (auto!.Brand!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand == "*" && model != "*" && color != "*")
+                {
+                    if (auto!.Model!.Equals(model) && auto!.Color!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand != "*" && model == "*" && color != "*")
+                {
+                    if (auto!.Brand!.Equals(model) && auto!.Color!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand != "*" && model != "*" && color == "*")
+                {
+                    if (auto!.Model!.Equals(model) && auto!.Brand!.Equals(color) && auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
+                }
+                else if (brand == "*" && model == "*" && color == "*")
+                {
+                    if (auto!.Year! >= minimunYear && auto!.Price! <= maximunPrice)
+                    {
+                        output += $"{auto}\n";
+                    }
                 }
                 pointer = pointer.Right;
             }
             return output + "\n";
         }
 
-
+        //Returns the car with the lowest price and the car with the highest price in an array
+         // In position 0 the car with the lowest price
+         // In position 1 the car with the highest price
+         public T [] GetMinMax()
+         {
+            var array = new T[2];
+            var pointer = _first;
+            var output = string.Empty;
+            while (pointer != null)
+            {
+                var minimum = 240000000;
+                var maximum = 0;
+                Automovil auto = (Automovil)Convert.ChangeType(pointer.Data, typeof(Automovil))!;
+                if (auto!.Price! <= minimum)
+                {
+                    minimum = auto!.Price!;
+                    array[0] = auto;
+                }
+                if (auto!.Price! >= maximum)
+                {
+                    maximum = auto!.Price!;
+                    array[1] = auto;
+                }
+                pointer = pointer.Right;
+            }
+            return array;
+         }
+        
     }
 }
